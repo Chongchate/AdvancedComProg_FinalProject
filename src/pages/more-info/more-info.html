@@ -1,0 +1,85 @@
+<!--
+  Generated template for the MoreInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="blue">
+    <ion-title>Poke-Facts</ion-title>
+    <button ion-button color="blue">
+      <ion-icon slot="start" size="large" name="information-circle-outline" (click)="moreInfo()"></ion-icon>
+    </button>
+  </ion-navbar>
+  
+</ion-header>
+
+<ion-content padding >
+  <h1>Top 10 Most Common Pokemon Types </h1>
+  <button ion-button block color="blue" (click)="displayChart()">show Chart</button>
+  <canvas #doughnutCanvas ></canvas>
+  <h1>More Interesting Facts!</h1>
+  <ion-card *ngFor="let item of res" class="bg">
+    <ion-card-header><b>Top Attack Power </b></ion-card-header>
+    <ion-avatar slot="end">
+      <img src="https://img.pngio.com/mega-mewtwo-y-by-waitochan-on-deviantart-mega-mewtwo-y-png-784_1020.png" />
+    </ion-avatar>
+    <div>
+      <ion-item>
+        <h3>Name: {{item.max_atk.name}}</h3>
+        <h3>Attack: {{item.max_atk.attack}}</h3>
+      </ion-item>
+    </div>
+  </ion-card>
+  <ion-card *ngFor="let item of res" class="bg2">
+    <ion-card-header><b>Top Defense Power</b></ion-card-header>
+    <ion-avatar>
+      <img src="./assets/imgs/{{item.max_def.id}}.png" />
+    </ion-avatar>
+    <div>
+      <ion-item>
+        <h3>Name: {{item.max_def.name}}</h3>
+        <h3>Defense: {{item.max_def.defense}}</h3>
+      </ion-item>
+    </div>
+  </ion-card>
+
+  <ion-card *ngFor="let item of res" class="bg1">
+    <ion-card-header><b>Top Health Point</b></ion-card-header>
+    <ion-avatar>
+      <img src="./assets/imgs/{{item.max_hp.id}}.png" />
+    </ion-avatar>
+    <div>
+      <ion-item>
+        <h3>Name: {{item.max_hp.name}}</h3>
+        <h3>Hp: {{item.max_hp.hp}}</h3>
+      </ion-item>
+    </div>
+  </ion-card>
+
+  <ion-card *ngFor="let item of res" class="bg3">
+    <ion-card-header><b>Top Weight </b></ion-card-header>
+    <ion-avatar>
+      <img src="https://cdn.bulbagarden.net/upload/thumb/7/70/383Groudon.png/1200px-383Groudon.png" />
+    </ion-avatar>
+    <div>
+      <ion-item>
+        <h3>Name: {{item.max_wt.name}}</h3>
+        <h3>Weight: {{item.max_wt.weight}}</h3>
+      </ion-item>
+    </div>
+  </ion-card>
+
+  <ion-card *ngFor="let item of res" class="bg4">
+    <ion-card-header><b>Top Height </b></ion-card-header>
+    <ion-avatar>
+      <img src="https://i.pinimg.com/originals/5f/e7/bb/5fe7bb196f4f88ebde9e0cde01702ba0.png" />
+    </ion-avatar>
+    <div>
+      <ion-item>
+        <h3>Name: {{item.max_ht.name}}</h3>
+        <h3>Height: {{item.max_ht.height}}</h3>
+      </ion-item>
+    </div>
+  </ion-card>
+</ion-content>

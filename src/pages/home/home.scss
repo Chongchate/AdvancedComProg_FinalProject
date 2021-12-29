@@ -1,3 +1,11 @@
 page-home {
-
+  ion-content {
+      //background: rgb(58, 51, 153) !important;
+  }
+  .bg{
+      background: linear-gradient(to bottom, red 0%, white 100% )
+  }
+  .bg1{
+    background: linear-gradient(to bottom, rgba(9, 185, 141, 0.753) 0%, white 100% )
+}
 }

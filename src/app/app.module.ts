@@ -6,25 +6,36 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { PagesArenaPage } from '../pages/pages-arena/pages-arena';
+import { MoreInfoPage } from '../pages/more-info/more-info';
+import { TabsPage } from '../pages/tabs/tabs';
+import { HttpClientModule } from '@angular/common/http';
+import { MyDataProvider } from '../providers/my-data/my-data';
+import { ChartsModule } from 'ng2-charts';
+
+
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,PagesArenaPage,MoreInfoPage,TabsPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
+  
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,PagesArenaPage,MoreInfoPage,TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    MyDataProvider
   ]
 })
 export class AppModule {}

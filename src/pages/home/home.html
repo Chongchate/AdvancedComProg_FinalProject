@@ -1,14 +1,70 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark" >
     <ion-title>
-      Ionic Blank
+      Home
     </ion-title>
+  
   </ion-navbar>
+
+  <ion-toolbar color="dark">
+    <ion-searchbar placeholder="Search Pokemon" [(ngModel)]="name"></ion-searchbar>
+    <button ion-Button color="primary"  (click)="search(name)">search!    
+    </button>
+
+  </ion-toolbar>
+  
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v3">docs</a> will be your guide.
-  </p>
+
+<ion-content padding class="bg1">
+
+  <div slot="fixed">
+    
+      <h1 ion-text color="dark">Find your favourite Pokemon</h1>
+    
+  </div>
+  <div *ngIf='pokemon$ | async as poke'>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="./assets/imgs/{{poke.data.id}}.png" />
+      </ion-avatar>
+      <h2>Name:       {{poke.data.name}}</h2>
+      <p>ID:          {{poke.data.id}}</p>
+      <p>Type:        {{poke.data.type}}</p>
+      <p>Speed:       {{poke.data.speed}}</p>
+      <p>Weight:      {{poke.data.weight}}</p>
+      <p>Height:      {{poke.data.height}}</p>
+      <p>Atk:         {{poke.data.attack}}</p>
+      <p>Def:         {{poke.data.defense}}</p>
+      <p>Special Atk: {{poke.data.special_attack}}</p>
+      <p>Special Def: {{poke.data.special_defense}}</p>
+    </ion-item>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let item of itemListData"> 
+      <ion-avatar slot="start">
+        <img src="./assets/imgs/{{item.id}}.png" />
+      </ion-avatar>
+      <h2>Name:       {{item.name}}</h2>
+      <p>ID:          {{item.id}}</p>
+      <p>Type:        {{item.type}}</p>
+      <p>Speed:       {{item.speed}}</p>
+      <p>Weight:      {{item.weight}}</p>
+      <p>Height:      {{item.height}}</p>
+      <p>Atk:         {{item.attack}}</p>
+      <p>Def:         {{item.defense}}</p>
+      <p>Special Atk: {{item.special_attack}}</p>
+      <p>Special Def: {{item.special_defense}}</p>
+      
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading">
+
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>
+
