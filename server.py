@@ -18,7 +18,7 @@ def home():
 #@app.route('/storedata')
 #def storedata():
 
-  client=MongoClient("mongodb+srv://ford:1234@cluster0.ghrgq.mongodb.net/test?retryWrites=true&w=majority")
+  client=MongoClient("mongodb+srv://testuser:015911346@cluster0.tbsfv.mongodb.net/<dbname>?retryWrites=true&w=majority")
   db=client.final_project
 
   with open("pokemon_full.csv") as myfile:
