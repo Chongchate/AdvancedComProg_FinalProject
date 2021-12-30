@@ -10,6 +10,7 @@ from bson.json_util import loads
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 run_with_ngrok(app)
+connection_string = "mongodb+srv://testuser:015911346@cluster0.tbsfv.mongodb.net/<dbname>?retryWrites=true&w=majority"
 
 @app.route('/')
 def home():
@@ -18,7 +19,7 @@ def home():
 #@app.route('/storedata')
 #def storedata():
 
-  client=MongoClient("mongodb+srv://testuser:015911346@cluster0.tbsfv.mongodb.net/<dbname>?retryWrites=true&w=majority")
+  client=MongoClient(connection_string)
   db=client.final_project
 
   with open("pokemon_full.csv") as myfile:
@@ -36,7 +37,7 @@ def home():
 @app.route('/storedata')
 def storedata():
 
-  client=MongoClient("mongodb+srv://ford:1234@cluster0.ghrgq.mongodb.net/test?retryWrites=true&w=majority")
+  client=MongoClient(connection_string)
   db=client.final_project
 
   file = open("pokemon_full.csv")
@@ -50,7 +51,7 @@ def storedata():
 @app.route('/showdata')
 def showdata():
 
-  client=MongoClient("mongodb+srv://ford:1234@cluster0.ghrgq.mongodb.net/test?retryWrites=true&w=majority")
+  client=MongoClient(connection_string)
   db=client.final_project
   ret=dict()
   listdata=[]
@@ -69,7 +70,7 @@ def showdata():
 
 @app.route('/versus')
 def versus():
-  client=MongoClient("mongodb+srv://ford:1234@cluster0.ghrgq.mongodb.net/test?retryWrites=true&w=majority")
+  client=MongoClient(connection_string)
   db=client.final_project
   name1=request.args.get('name1')
   name2=request.args.get('name2')
@@ -94,7 +95,7 @@ def versus():
 @app.route('/findpoke')
 def findPoke():
 
-  client=MongoClient("mongodb+srv://ford:1234@cluster0.ghrgq.mongodb.net/test?retryWrites=true&w=majority")
+  client=MongoClient(connection_string)
   db=client.final_project
   ret=dict()
   name=request.args.get('name')
@@ -107,7 +108,7 @@ def findPoke():
 @app.route('/stats')
 def stats():
   from collections import Counter
-  client=MongoClient("mongodb+srv://ford:1234@cluster0.ghrgq.mongodb.net/test?retryWrites=true&w=majority")
+  client=MongoClient(connection_string)
   db=client.final_project
   alldata =[docs for docs in db.pokemon.find({},{"_id":0}).sort("id")]
 
